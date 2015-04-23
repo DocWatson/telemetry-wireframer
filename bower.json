@@ -1,0 +1,26 @@
+{
+  "name": "telemetry-wireframer",
+  "version": "0.0.1",
+  "authors": [
+    "Beau Watson <beau@beauwatson.com>"
+  ],
+  "description": "Wireframe in HTML using Jade, Gulp, and Bootstrap",
+  "keywords": [
+    "wireframe"
+  ],
+  "license": "MIT",
+  "homepage": "http://docwatson.net",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "font-awesome": "~4.3.0",
+    "components-blokkfont": "~0.0.1"
+  }
+}

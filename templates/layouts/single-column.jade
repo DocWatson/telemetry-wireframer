@@ -1,0 +1,21 @@
+include ../includes/components.jade
+
+block vars
+  - var nav = ['home','about','services','contact']
+  
+doctype html
+html(lang="en")
+  include ../includes/head.jade
+  body
+    block header
+      header.site-header
+        h1 My Site
+        nav 
+          ul
+            each item in nav
+              li
+                a(href="#"+item)= item
+    main.single-column
+      block main
+    
+    include ../includes/footer.jade
