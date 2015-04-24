@@ -2,18 +2,20 @@
 var projectName = 'Wireframes';
 var outputPath  = '../public_html/wireframes/';
 
-var gulp   = require('gulp');
-var concat = require('gulp-concat');
-var jade   = require('gulp-jade');
-var less   = require('gulp-less');
-var path   = require('path');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
+var gulp     = require('gulp');
+var concat   = require('gulp-concat');
+var jade     = require('gulp-jade');
+var less     = require('gulp-less');
+var notifier = require("node-notifier");
+var path     = require('path');
+var rename   = require('gulp-rename');
+var uglify   = require('gulp-uglify');
 
-function swallowError() {
-  console.log(error.toString());
-
-    this.emit('end');
+//function to handle gulp watch errors
+function swallowError(error) {
+  console.log(error.message);
+  notifier.notify({title: 'Error', message: error.message});
+  this.emit('end');
 }
 
 // function to move fonts from bower installed directories to your output directory
@@ -46,8 +48,8 @@ gulp.task('less', function () {
     .pipe(less({
       paths: [   ]
     }))
-    .pipe(concat('style.css'))
     .on('error', swallowError)
+    .pipe(concat('style.css'))
     .pipe(gulp.dest(outputPath + 'css/'));
 });
 

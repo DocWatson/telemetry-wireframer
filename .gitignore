@@ -28,3 +28,9 @@ node_modules
 
 # Bower dependencies
 bower_components
+
+# Custom Layouts and COmponents Directories
+assets/less/custom_components
+assets/less/custom_layouts
+templates/custom_includes
+templates/custom_layouts
