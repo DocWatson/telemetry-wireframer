@@ -1,5 +1,6 @@
 mixin sticky-nav(cssClass, items)
-  nav(class=cssClass)
+  nav.sticky-nav(class=cssClass)
+    a.logo logo
     ul
       each item in items
         li= item

@@ -10,6 +10,12 @@ var path   = require('path');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 
+function swallowError() {
+  console.log(error.toString());
+
+    this.emit('end');
+}
+
 // function to move fonts from bower installed directories to your output directory
 gulp.task('copyfonts', function() {
    gulp.src(['./bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}',
@@ -29,6 +35,7 @@ gulp.task('js', function() {
     .pipe(concat('scripts.js'))
     .pipe(gulp.dest(outputPath + 'js/'))
     .pipe(uglify())
+    .on('error', swallowError)
     .pipe(rename('scripts.min.js'))
     .pipe(gulp.dest(outputPath + 'js/'))
 });
@@ -40,6 +47,7 @@ gulp.task('less', function () {
       paths: [   ]
     }))
     .pipe(concat('style.css'))
+    .on('error', swallowError)
     .pipe(gulp.dest(outputPath + 'css/'));
 });
 
@@ -47,6 +55,7 @@ gulp.task('less', function () {
 gulp.task('templates', function() {
   gulp.src('./templates/*.jade')
     .pipe(jade())
+    .on('error', swallowError)
     .pipe(gulp.dest(outputPath))
 });
 
