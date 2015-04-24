@@ -1,6 +1,6 @@
 {
   "name": "telemetry-wireframer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Wireframe in HTML using Gulp, Jade, and Bootstrap",
   "author": "Beau Watson <DocWatson>",
   "dependencies": {
