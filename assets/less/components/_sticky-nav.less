@@ -1,22 +1,29 @@
 .sticky-nav {
-  background: #555;
   position: fixed;
   z-index: 10;
 
   ul {
+    display: none;
     margin: 0;
     padding: 0;
 
     li {
       list-style: none;
     }
-    
+
+    @media (min-width: @screen-sm-min) {
+      display: block;
+    }
+
   }
 
   &.fixed-left {
-    height: 100vh;
-    left: 0;
-    top: 0;
+
+    @media (min-width: @screen-sm-min) {
+      height: 100vh;
+      left: 0;
+      top: 0;
+    }
   }
 
   &.fixed-right {
@@ -29,5 +36,13 @@
     left: 0;
     top: 0;
     width: 100vw;
+  }
+
+  .nav-toggle {
+    display: block;
+
+    @media (min-width: @screen-sm-min) {
+      display: none;
+    }
   }
 }

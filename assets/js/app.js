@@ -2,6 +2,25 @@ Wireframe = {
   common: {
     init: function() {
       console.log('Telemetry Wireframer Initialized');
+
+      var slideHeight  = $('.isi').offset().top;
+      var windowHeight = $(window).height();
+      var diffHeight   = slideHeight - windowHeight;
+
+      $(window).scroll(function() {
+        var windowScroll = $(window).scrollTop();
+        if ( windowScroll > diffHeight ) {
+          $('.sticky-footer').hide();
+        } else { $('.sticky-footer').show(); };
+
+      });
+
+      $('body').on('click', '.nav-toggle', function(e){
+        e.preventDefault();
+        var targetNav = $(this).data('target-nav');
+
+        $(targetNav).toggleClass('active');
+      });
     }
   },
 };

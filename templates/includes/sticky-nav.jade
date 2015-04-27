@@ -1,6 +1,7 @@
 mixin sticky-nav(cssClass, items)
   nav.sticky-nav(class=cssClass)
+    button.nav-toggle(data-target-nav=".nav-list") Menu
     a.logo logo
-    ul
+    ul.nav-list
       each item in items
         li= item

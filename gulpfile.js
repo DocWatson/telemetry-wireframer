@@ -2,14 +2,16 @@
 var projectName = 'Wireframes';
 var outputPath  = '../public_html/wireframes/';
 
-var gulp     = require('gulp');
-var concat   = require('gulp-concat');
-var jade     = require('gulp-jade');
-var less     = require('gulp-less');
-var notifier = require("node-notifier");
-var path     = require('path');
-var rename   = require('gulp-rename');
-var uglify   = require('gulp-uglify');
+var browserSync = require('browser-sync').create();
+var gulp        = require('gulp');
+var concat      = require('gulp-concat');
+var jade        = require('gulp-jade');
+var less        = require('gulp-less');
+var notifier    = require("node-notifier");
+var path        = require('path');
+var reload      = browserSync.reload;
+var rename      = require('gulp-rename');
+var uglify      = require('gulp-uglify');
 
 //function to handle gulp watch errors
 function swallowError(error) {
@@ -50,7 +52,8 @@ gulp.task('less', function () {
     }))
     .on('error', swallowError)
     .pipe(concat('style.css'))
-    .pipe(gulp.dest(outputPath + 'css/'));
+    .pipe(gulp.dest(outputPath + 'css/'))
+    .pipe(reload({stream: true}));
 });
 
 // compile the jade templates
@@ -63,6 +66,12 @@ gulp.task('templates', function() {
 
 // watch tasks. Fires on jade template or less file change
 gulp.task('watch', function(){
+  browserSync.init({
+      server: {
+          baseDir: outputPath
+      }
+  });
+
   gulp.watch('templates/**/*.jade', ['templates']);
   gulp.watch('assets/less/**/*.less',['less']);
   gulp.watch('assets/js/**/*.js',['js']);
