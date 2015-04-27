@@ -27,9 +27,15 @@ gulp.task('copyfonts', function() {
    .pipe(gulp.dest(outputPath + 'fonts/'));
 });
 
+//function to move included images to the output directory
+gulp.task('copyimages', function() {
+   gulp.src(['./assets/img/**/*.{jpg,png,gif,svg}'])
+   .pipe(gulp.dest(outputPath + 'img/'));
+});
+
 // default gulp task
 gulp.task('default', function(){
-  gulp.start(['copyfonts', 'js', 'less', 'templates', 'watch']);
+  gulp.start(['copyfonts', 'copyimages', 'js', 'less', 'templates', 'watch']);
 });
 
 gulp.task('js', function() {
@@ -63,6 +69,7 @@ gulp.task('templates', function() {
     .pipe(jade())
     .on('error', swallowError)
     .pipe(gulp.dest(outputPath))
+    .pipe(reload({stream: true}));
 });
 
 // watch tasks. Fires on jade template or less file change
