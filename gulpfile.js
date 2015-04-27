@@ -42,6 +42,7 @@ gulp.task('js', function() {
     .on('error', swallowError)
     .pipe(rename('scripts.min.js'))
     .pipe(gulp.dest(outputPath + 'js/'))
+    .pipe(reload({stream: true}));
 });
 
 // compile the less
