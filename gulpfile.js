@@ -1,7 +1,7 @@
 //project vars
 var projectName = 'Wireframes';
 var outputPath  = '../public_html/wireframes/';
-var menu = require('./config/menu.json');
+var menu = require('./config/custom-menu.json');
 
 var browserSync = require('browser-sync').create();
 var gulp        = require('gulp');
