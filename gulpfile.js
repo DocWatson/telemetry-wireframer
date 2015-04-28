@@ -1,6 +1,7 @@
 //project vars
 var projectName = 'Wireframes';
 var outputPath  = '../public_html/wireframes/';
+var menu = require('./config/menu.json');
 
 var browserSync = require('browser-sync').create();
 var gulp        = require('gulp');
@@ -65,11 +66,13 @@ gulp.task('less', function () {
 
 // compile the jade templates
 gulp.task('templates', function() {
+  //set up a menu based on JSON
+  var locals = {'menu' : menu};
+
   gulp.src('./templates/*.jade')
-    .pipe(jade())
+    .pipe(jade({locals: locals}))
     .on('error', swallowError)
-    .pipe(gulp.dest(outputPath))
-    .pipe(reload({stream: true}));
+    .pipe(gulp.dest(outputPath));
 });
 
 // watch tasks. Fires on jade template or less file change
@@ -83,4 +86,5 @@ gulp.task('watch', function(){
   gulp.watch('templates/**/*.jade', ['templates']);
   gulp.watch('assets/less/**/*.less',['less']);
   gulp.watch('assets/js/**/*.js',['js']);
+  gulp.watch(outputPath + '*.html').on('change', browserSync.reload);
 });

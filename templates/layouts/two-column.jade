@@ -1,8 +1,5 @@
 include ../includes/components.jade
 
-block vars
-  - var nav = ['home','about','services','contact']
-  
 doctype html
 html(lang="en")
   include ../includes/head.jade
@@ -11,10 +8,10 @@ html(lang="en")
       header.site-header
         h1 My Site
         nav 
-          ul
-            each item in nav
-              li
-                a(href="#"+item)= item
+          ul.nav-list
+            each menu, name in locals.menu
+                li(class=menu.class)
+                  a(href=menu.href)= name
     main.two-column
       block main
       

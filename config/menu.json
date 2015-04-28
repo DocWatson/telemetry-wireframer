@@ -1,0 +1,28 @@
+{
+  "About" : {
+    "class" : "about submenu",
+    "href"  : "about.html",
+    "submenu":  {
+        "menu" : [
+          {"title" : "Screening Dose", "href": "about.html"},
+          {"title" : "Prefilled Syringe", "href": "about.html"},
+          {"title" : "Factory Sealed Vials", "href": "about.html"}
+        ]
+      }
+  },
+  "Services" : {},
+  "Resources": {
+    "href" : "about.html",
+    "class" :"submenu",
+    "submenu" : {
+        "menu" : [
+          {"title":"Wiki"},
+          {"title":"Forum"}
+        ]
+      }
+  },
+  "Contact": {
+    "href" : "about.html",
+    "class" : "contact"
+  }
+}

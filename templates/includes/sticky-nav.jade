@@ -3,5 +3,15 @@ mixin sticky-nav(cssClass, items)
     button.nav-toggle(data-target-nav=".sticky-nav") Menu
     a.logo logo
     ul.nav-list
-      each item in items
-        li= item
+      each menu, name in locals.menu
+          li(class=menu.class)
+            a(href=menu.href)= name
+            if (typeof menu.submenu === 'object')
+              +parseSubMenu(menu.submenu.menu)
+
+//helper mixin to parse subnavs
+mixin parseSubMenu(obj)
+  ul
+    each item in obj
+      li
+        a(href=item.href)= item.title
