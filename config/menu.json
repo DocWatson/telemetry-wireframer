@@ -4,9 +4,7 @@
     "href"  : "about.html",
     "submenu":  {
         "menu" : [
-          {"title" : "Screening Dose", "href": "about.html"},
-          {"title" : "Prefilled Syringe", "href": "about.html"},
-          {"title" : "Factory Sealed Vials", "href": "about.html"}
+          {"title" : "Company", "href": "about.html"},
         ]
       }
   },
